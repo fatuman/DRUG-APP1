@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginLeft="50dp"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="0dp"
+        android:text="@string/camera"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/grey"
+        android:id="@+id/buttoncam"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="50dp"
+        android:text="@string/gallery"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/grey"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="50dp"
+        android:text="@string/process"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/grey"
+        />
+
+</LinearLayout>

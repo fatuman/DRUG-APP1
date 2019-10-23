@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DRUG-APP</string>
+    <string name="email">Enter your Email</string>
+    <string name="password">Enter your Password</string>
+    <string name="login">LOGIN</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="signup">Recycler view</string>
+    <string name="camera">CAMERA</string>
+    <string name="gallery">OPEN GALLERY</string>
+    <string name="process">PROCESS IMAGE</string>
+    <string name="question">Forgot your password?</string>
+    <string name="message">To reset password, enter your email, press the button and
+    check the mail to follow instructions</string>
+    <string name="email1">Your email here</string>
+    <string name="passwordReset">RESET PASSWORD</string>
+    <string name="back">BACK</string>
+    <string name="account">Already have an account? Login</string>
+    <string name="use">Use this app correctly</string>
+
+</resources>
