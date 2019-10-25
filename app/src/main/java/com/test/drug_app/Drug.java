@@ -31,5 +31,14 @@ public class Drug extends AppCompatActivity {
                 startActivity(new Intent(Drug.this, Drugrec.class));
             }
         });
+
+        Button forgot;
+        forgot = findViewById(R.id.forgot);
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Drug.this, Drug3.class));
+            }
+        });
     }
 }

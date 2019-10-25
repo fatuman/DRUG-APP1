@@ -44,6 +44,7 @@
         android:textSize="20sp"
         android:textColor="@color/colorPrimary"
         android:background="@color/white"
+        android:id="@+id/forgot"
         />
     <Button
         android:layout_width="match_parent"

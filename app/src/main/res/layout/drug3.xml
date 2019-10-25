@@ -12,9 +12,19 @@
         />
     <ImageView
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:layout_marginLeft="50dp"
         android:src="@drawable/ic_visibility_black_24dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:text="@string/cast"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/grey"
+        android:id="@+id/castbtn"
         />
     <TextView
         android:layout_width="match_parent"
