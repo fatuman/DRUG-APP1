@@ -31,7 +31,9 @@ public class Drug3 extends AppCompatActivity {
         filter = new IntentFilter();
         // specify the action to which receiver will listen
         filter.addAction("com.local.receiver");
+
         registerReceiver(receiver,filter);
+
         sendbroadcast=(Button)findViewById(R.id.castbtn);
         sendbroadcast.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,10 +42,17 @@ public class Drug3 extends AppCompatActivity {
                 sendBroadcast(intent);
             }
         });
-        MyBroadcastReceiver myBroadcastReceiver=new MyBroadcastReceiver();
-        IntentFilter filter1=new IntentFilter();
-        filter1.addAction("Intent.ACTION_POWER_CONNECTED");
-        registerReceiver(myBroadcastReceiver,filter1);
+        BroadcastReceiver broadcastReceiver=new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                Toast.makeText(context, "Broadcast Received Device is connected to Power",Toast.LENGTH_LONG).show();
+            }
+        };
+//        MyBroadcastReceiver myBroadcastReceiver=new MyBroadcastReceiver();
+//        IntentFilter filter1=new IntentFilter();
+//        filter1.addAction("Intent.ACTION_POWER_CONNECTED");
+//        registerReceiver(myBroadcastReceiver,filter1);
     }
     @Override
     protected void onDestroy() {
