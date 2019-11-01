@@ -40,5 +40,13 @@ public class Drug extends AppCompatActivity {
                 startActivity(new Intent(Drug.this, Drug3.class));
             }
         });
+        Button parse;
+        parse = findViewById(R.id.parse);
+        parse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Drug.this, Parse.class));
+            }
+        });
     }
 }

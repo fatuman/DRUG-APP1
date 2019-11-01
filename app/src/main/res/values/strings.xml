@@ -17,5 +17,6 @@
     <string name="account">Already have an account? Login</string>
     <string name="use">Use this app correctly</string>
     <string name="cast">BroadCast</string>
-
+    <string name="download">Download</string>
+    <string name="parse">Parser</string>
 </resources>

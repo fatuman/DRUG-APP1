@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.test.drug_app">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Permission: Writing to SDCard -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,7 +16,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".Drug2"
-            android:parentActivityName=".Drug" />
+            android:parentActivityName=".Drug"
+            />
 
         <activity
             android:name=".Drugrec"
@@ -21,7 +25,11 @@
         <activity
             android:name=".Drug3"
             android:parentActivityName=".Drug" />
+        <activity
+            android:name=".Parse"
+            android:parentActivityName=".Drug" />
         <activity android:name=".Drug">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,6 +42,7 @@
                 <action android:name="android.hardware.usb.action.USB_STATE" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>
