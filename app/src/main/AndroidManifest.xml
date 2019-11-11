@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.test.drug_app">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- Permission: Writing to SDCard -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permission: Writing to SDCard -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".NotificationsActivity"
+            android:parentActivityName=".Drug3"/>
         <activity
             android:name=".Drug2"
-            android:parentActivityName=".Drug"
-            />
-
+            android:parentActivityName=".Drug" />
         <activity
             android:name=".Drugrec"
             android:parentActivityName=".Drug" />
@@ -28,21 +28,28 @@
         <activity
             android:name=".Parse"
             android:parentActivityName=".Drug" />
-        <activity android:name=".Drug">
+        <activity
+            android:name=".DrugList"
+            android:parentActivityName=".Drug" />
+        <activity android:name=".AddDrug"/>
+        <activity android:name=".ModifyDrug"/>
 
+        <activity android:name=".DataBaseHelper"/>
+
+        <activity android:name=".Drug">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver android:name=".MyBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_STATE" />
                 <action android:name="android.hardware.usb.action.USB_STATE" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

@@ -1,11 +1,13 @@
 package com.test.drug_app;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.Context;
 import android.app.DownloadManager;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,6 +20,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +35,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-public class Drug2 extends AppCompatActivity {
+public class
+Drug2 extends AppCompatActivity {
 
     private static final int CAMERA = 101;
     // Progress Dialog
@@ -48,6 +53,7 @@ public class Drug2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drug1);
+
         Button buttoncam;
         buttoncam = (Button) findViewById(R.id.buttoncam);
         buttoncam.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +63,6 @@ public class Drug2 extends AppCompatActivity {
                 startActivityForResult(intent, CAMERA);
             }
         });
-        ImageView my_image;
-        my_image = (ImageView) findViewById(R.id.my_image);
 
         Button download;
         download = findViewById(R.id.download);
@@ -118,7 +122,7 @@ public class Drug2 extends AppCompatActivity {
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
                 // Output stream
-                OutputStream output = new FileOutputStream("/sdcard/downloadedfile.jpg");
+                OutputStream output = new FileOutputStream("/download/downloadedfile.jpg");
 
                 byte data[] = new byte[1024];
 
@@ -166,7 +170,7 @@ public class Drug2 extends AppCompatActivity {
             my_image = (ImageView) findViewById(R.id.my_image);
             // Displaying downloaded image into image view
             // Reading image path from sdcard
-            String imagePath = Environment.getExternalStorageDirectory().toString() + "/downloadedfile.jpg";
+            String imagePath = getFilesDir().toString() + "/downloadedfile.jpg";
             // setting downloaded into image view
             my_image.setImageDrawable(Drawable.createFromPath(imagePath));
         }

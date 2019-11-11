@@ -48,5 +48,14 @@ public class Drug extends AppCompatActivity {
                 startActivity(new Intent(Drug.this, Parse.class));
             }
         });
+
+       Button sign;
+        sign = findViewById(R.id.sign);
+        sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Drug.this, DrugList.class));
+            }
+        });
     }
 }
