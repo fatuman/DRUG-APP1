@@ -1,8 +1,10 @@
 package com.test.drug_app;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
 
@@ -38,14 +40,7 @@ public class Drug3 extends AppCompatActivity {
 
         registerReceiver(receiver,filter);
 
-        //sendbroadcast=(Button)findViewById(R.id.castbtn);
-       /* sendbroadcast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent("com.local.receiver");
-                sendBroadcast(intent);
-            }
-        });*/
+
         BroadcastReceiver broadcastReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -53,29 +48,14 @@ public class Drug3 extends AppCompatActivity {
                 Toast.makeText(context, "Broadcast Received Device is connected to Power",Toast.LENGTH_LONG).show();
             }
         };
-        Button reset;
-        reset=findViewById(R.id.reset);
-        reset.setOnClickListener(new View.OnClickListener() {
+        Button b1;
+        b1 = (Button)findViewById(R.id.reset);
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = "Your password has been reset," +
-                        "    please check your email " ;
-                NotificationCompat.Builder builder=  new NotificationCompat.Builder
-                        (Drug3.this)
-                        //.setSmallIcon(R.drawable.ic_message)
-                        .setContentTitle("Drug_App")
-                        .setAutoCancel(true);
-                Intent intent = new Intent(Drug3.this,NotificationsActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("message",message);
-                PendingIntent pendingIntent= PendingIntent.getActivity(Drug3.this,
-                        0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-                builder.setContentIntent(pendingIntent);
-                NotificationManager notificationManager= (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-               notificationManager.notify(0,builder.build());
+                addNotification();
             }
         });
-
 //        MyBroadcastReceiver myBroadcastReceiver=new MyBroadcastReceiver();
 //        IntentFilter filter1=new IntentFilter();
 //        filter1.addAction("Intent.ACTION_POWER_CONNECTED");
@@ -88,6 +68,22 @@ public class Drug3 extends AppCompatActivity {
         {
             unregisterReceiver(receiver);
         }
+    }
+    private void addNotification() {
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.ic_message)
+
+                        .setContentText("Your password has been reset please check your email");
+
+        Intent notificationIntent = new Intent(this, Drug3.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        // Add as notification
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 
 }
