@@ -56,10 +56,7 @@ public class Drug3 extends AppCompatActivity {
                 addNotification();
             }
         });
-//        MyBroadcastReceiver myBroadcastReceiver=new MyBroadcastReceiver();
-//        IntentFilter filter1=new IntentFilter();
-//        filter1.addAction("Intent.ACTION_POWER_CONNECTED");
-//        registerReceiver(myBroadcastReceiver,filter1);
+
     }
     @Override
     protected void onDestroy() {
@@ -67,6 +64,7 @@ public class Drug3 extends AppCompatActivity {
         if(receiver!=null)
         {
             unregisterReceiver(receiver);
+
         }
     }
     private void addNotification() {

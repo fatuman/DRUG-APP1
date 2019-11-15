@@ -9,9 +9,9 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-//        if (intent.getAction().equals(Intent.ACTION_POWER_CONNECTED)) {
+// if (intent.getAction().equals(Intent.)) {
         Log.d("BATTERY","Power connected");
             Toast.makeText(context, "Broadcast Received Device is connected to Power", Toast.LENGTH_LONG).show();
-//        }
+// }
     }
 }

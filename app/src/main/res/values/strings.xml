@@ -46,4 +46,8 @@
     <string name="enter_desc">Password</string>
     <string name="enter_title">Email</string>
     <string name="not">Hi, Your Detailed notification view goes here....</string>
+
+    <string name="display_content">DISPLAY CONTENT</string>
+    <string name="usage_instructions">This is Android Content Provider Application that shared its data with other apps. To test or access this data, you must install the second application and use it to query and insert data</string>
+    <string name="dictionary_provide_permission">com.test.anotherapp.DICTIONARY_PROVIDER_PERMISSION</string>
 </resources>

@@ -20,12 +20,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".NotificationView"
+        <activity android:name=".Main"></activity>
+        <activity
+            android:name=".NotificationView"
             android:label="Details of notification"
             android:parentActivityName=".Drug3">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".Drug3"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Drug3" />
         </activity>
         <activity
             android:name=".Drug2"
@@ -53,10 +55,7 @@
             </intent-filter>
         </activity>
 
-        <provider
-            android:name=".MyContentProvider"
-            android:authorities="com.test.drug_app.Declare"
-            android:exported="true" />
+
 
         <receiver android:name=".MyBroadcastReceiver">
             <intent-filter>
@@ -64,6 +63,10 @@
                 <action android:name="android.hardware.usb.action.USB_STATE" />
             </intent-filter>
         </receiver>
+        <provider
+            android:authorities="com.test.drug_app.Dictionary"
+            android:name="com.test.drug_app.Provider"
+            android:exported="true"/>
     </application>
 
 </manifest>
