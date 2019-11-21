@@ -72,7 +72,7 @@ public class Drug3 extends AppCompatActivity {
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_message)
 
-                        .setContentText("Your password has been reset please check your email");
+                        .setContentText("Check Your Email For The Password Reset Link");
 
         Intent notificationIntent = new Intent(this, Drug3.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent,

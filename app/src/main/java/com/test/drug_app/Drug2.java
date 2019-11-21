@@ -47,6 +47,7 @@ Drug2 extends AppCompatActivity {
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private static final int CAMERA = 101;
     private ImageView imageView;
+    private static final int REQUEST_INTERNAL =2222 ;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -54,13 +55,13 @@ Drug2 extends AppCompatActivity {
     public static final int progress_bar_type = 0;
 
     // File url to download
-    private static String file_url = "https://www.google.com/search?q=flower&rlz=1C1GGRV_enUG798UG801&sxsrf=ACYBGNT6ijVaqVEaE6NVV9EocQRz3VtezQ:1572339283054&tbm=isch&source=iu&ictx=1&fir=T5JIePDwkCxmNM%253A%252CJ7Z0BuYTafTdVM%252C_&vet=1&usg=AI4_-kRPfYg008K6QaykVhhj_H9mmWTq9Q&sa=X&ved=2ahUKEwjy_7qjjMHlAhVXTxUIHSPRCe4Q9QEwB3oECAYQPQ#imgrc=T5JIePDwkCxmNM:";
-
+    private static String file_url = "https://i.ebayimg.com/images/g/6jUAAOSw7tVa2WM1/s-l300.png";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drug1);
+
 
         Button buttoncam;
         buttoncam = (Button) findViewById(R.id.buttoncam);
@@ -87,6 +88,13 @@ Drug2 extends AppCompatActivity {
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(Drug2.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Permission is not granted
+                    ActivityCompat.requestPermissions(Drug2.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            REQUEST_INTERNAL);
+                }
                 // starting new Async Task
                 new DownloadFileFromURL().execute(file_url);
             }
@@ -142,7 +150,7 @@ Drug2 extends AppCompatActivity {
         /**
          * Before starting background thread
          * Show Progress Bar Dialog
-         */
+         * */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -151,7 +159,7 @@ Drug2 extends AppCompatActivity {
 
         /**
          * Downloading file in background thread
-         */
+         * */
         @Override
         protected String doInBackground(String... f_url) {
             int count;
@@ -162,12 +170,11 @@ Drug2 extends AppCompatActivity {
                 // this will be useful so that you can show a tipical 0-100% progress bar
                 int lenghtOfFile = conection.getContentLength();
 
-
                 // download the file
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
 
                 // Output stream
-                OutputStream output = new FileOutputStream("/download/downloadedfile.jpg");
+                OutputStream output = new FileOutputStream("/sdcard/downloadedfile.jpg");
 
                 byte data[] = new byte[1024];
 
@@ -177,7 +184,7 @@ Drug2 extends AppCompatActivity {
                     total += count;
                     // publishing the progress....
                     // After this onProgressUpdate will be called
-                    publishProgress("" + (int) ((total * 100) / lenghtOfFile));
+                    publishProgress(""+(int)((total*100)/lenghtOfFile));
 
                     // writing data to file
                     output.write(data, 0, count);
@@ -197,6 +204,9 @@ Drug2 extends AppCompatActivity {
             return null;
         }
 
+        /**
+         * Updating progress bar
+         * */
         protected void onProgressUpdate(String... progress) {
             // setting progress percentage
             pDialog.setProgress(Integer.parseInt(progress[0]));
@@ -205,19 +215,18 @@ Drug2 extends AppCompatActivity {
         /**
          * After completing background task
          * Dismiss the progress dialog
-         **/
+         * **/
         @Override
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after the file was downloaded
             dismissDialog(progress_bar_type);
 
-            ImageView my_image;
-            my_image = (ImageView) findViewById(R.id.my_image);
             // Displaying downloaded image into image view
             // Reading image path from sdcard
-            String imagePath = getFilesDir().toString() + "/downloadedfile.jpg";
+            String imagePath = Environment.getExternalStorageDirectory().toString() + "/downloadedfile.jpg";
             // setting downloaded into image view
-            my_image.setImageDrawable(Drawable.createFromPath(imagePath));
+            imageView = (ImageView) findViewById(R.id.my_image);
+            imageView.setImageDrawable(Drawable.createFromPath(imagePath));
         }
 
     }

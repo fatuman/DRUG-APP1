@@ -20,9 +20,9 @@
     <string name="download">Download</string>
     <string name="parse">Parser</string>
     <string name="showtext"></string>
-    <string name="add">Add user</string>
+    <string name="add">Add User</string>
 
-    <string name="sign">Add User</string>
+    <string name="sign">View Users</string>
     <string name="Add_New">Add New</string>
     <string name="edit">Edit Contact</string>
     <string name="delete">Delete Contact</string>
